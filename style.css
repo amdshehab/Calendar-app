@@ -1,0 +1,7 @@
+.theDiv{
+  height:200px;
+  border: 1px solid black;
+  position: fixed;
+  left: 100px;
+  top: 100px;
+}
