@@ -5,12 +5,18 @@ var Calendar =  React.createClass({
     return (
       h('div', {className: 'theDiv'},
         h('h1', {className: 'date'}, 'Date:' + new Date().toISOString().slice(0, 10)),
+        h(TimeSlot)
        )
     )
   }
 })
 
-
-
-
-//https://facebook.github.io/react/docs/react-without-jsx.html
+var TimeSlot = React.createClass({
+    render: function(){
+      return (
+        h('div', null,
+          h('h1', {className: 'some stuff'}, 'hello stuff')
+        )
+      )
+    }
+})
