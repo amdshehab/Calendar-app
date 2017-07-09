@@ -1,11 +1,12 @@
 var h = React.createElement;
+var taskArray = [];
 
 var Calendar =  React.createClass({
   render: function(){
     return (
       h('div', {className: 'theDiv'},
         h('h1', {className: 'date'}, 'Date:' + new Date().toISOString().slice(0, 10)),
-        h(TimeSlot)
+        taskCreator(this.props.tasks)
        )
     )
   }
@@ -20,3 +21,10 @@ var TimeSlot = React.createClass({
       )
     }
 })
+
+var taskCreator = (tasks) => {
+  for(i = 0; i < tasks.length; i++){
+    taskArray.push(h(TimeSlot))
+  }
+  return taskArray
+}
