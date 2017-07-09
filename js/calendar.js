@@ -1,5 +1,6 @@
 var h = React.createElement;
 var taskArray = [];
+var calendarRows = [];
 var date = new Date();
 var startTime = date.setHours(9, 00, 00)
 var endDate = date.setHours(18, 00, 00)
@@ -9,11 +10,31 @@ var Calendar =  React.createClass({
     return (
       h('div', {className: 'theDiv'},
         h('h1', {className: 'date'}, 'Date:' + new Date().toISOString().slice(0, 10)),
-        taskCreator(this.props.tasks)
+        createRows()
        )
     )
   }
 })
+
+var timeRow = React.createClass({
+  getInitialState: function() {
+     return {
+       boc: this.props.time
+     };
+   },
+  render: function(){
+    return (
+      h('div', {className: 'timeBox'}, this.state.boc)
+    )
+  }
+})
+
+var createRows = () => {
+  for(i = 0; i < 9; i++){
+    calendarRows.push(h(timeRow, {time: timeFixer((i+1)*60)}))
+  }
+  return calendarRows
+}
 
 var TimeSlot = React.createClass({
   getInitialState: function() {

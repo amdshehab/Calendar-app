@@ -1,6 +1,11 @@
 .theDiv{
   border: 1px solid black;
   position: fixed;
-  left: 100px;
-  top: 100px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.timeBox{
+  border: 1px solid black;
+  height: 100px;
 }
