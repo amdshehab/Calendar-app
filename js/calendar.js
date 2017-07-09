@@ -1,9 +1,8 @@
 var h = React.createElement;
 var taskArray = [];
 var date = new Date();
-var startTime = date.setHours(09, 00, 00)
+var startTime = date.setHours(9, 00, 00)
 var endDate = date.setHours(18, 00, 00)
-//date.setHours(date.getHours()+1)
 
 var Calendar =  React.createClass({
   render: function(){
@@ -35,7 +34,15 @@ var TimeSlot = React.createClass({
 
 var taskCreator = (tasks) => {
   for(i = 0; i < tasks.length; i++){
-    taskArray.push(h(TimeSlot, {start: tasks[i].start, end: tasks[i].end}))
+    let time = tasks[i].start
+    taskArray.push(h(TimeSlot, {start: timeFixer(tasks[i].start), end: timeFixer(tasks[i].end)}))
   }
   return taskArray
+}
+
+
+var timeFixer = (time) => {
+  var theDate = new Date();
+  theDate.setTime(startTime + (60*time*1000));
+  return theDate.toISOString().slice(11, 16)
 }
